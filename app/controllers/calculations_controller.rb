@@ -9,7 +9,7 @@ class CalculationsController < ApplicationController
 
   def flex_square_root_5
     @user_number = params["num"].to_i
-    @square_root = Math.sqrt(@user_number).round(2)
+    @square_root = Math.sqrt(@user_number)
     render("calculations/flex_square_root_5.html.erb")
   end
 
@@ -35,10 +35,12 @@ class CalculationsController < ApplicationController
   end
 
   def flex_payment_5
+
     @apr = params["num1"].to_f
+    @apr_percentage = (@apr/100).round(2)
     @years = params["num2"].to_i
     @principal = params["num3"].to_f
-    @monthly_payment = (((@apr/100)/12)*@principal)/(1-(1+((@apr/100)/12))**((-1*@years)*12))
+    @monthly_payment = (((@apr_percentage/100)/12)*@principal)/(1-(1+((@apr_percentage/100)/12))**((-1*@years)*12))
     render("calculations/flex_payment_5.html.erb")
   end
   def payment_form

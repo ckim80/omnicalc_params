@@ -1,8 +1,8 @@
 <p><b>APR</b><br>
-<%= @apr  %>%<br>
+<%= @apr.round(4)  %>%<br>
 <b>Number of years</b><br>
 <%= @years %><br>
 <b>Principal</b><br>
-$<%= @principal %><br>
+<%= number_to_currency(@principal) %><br>
 <b>Payment</b><br>
-$<%= @monthly_payment %>
+<%= number_to_currency(@monthly_payment) %>
